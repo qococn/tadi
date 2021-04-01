@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+<!--顶部搜索-->
+<script class='library' id='jquery_183' src='http://uicopic.oss-cn-hangzhou.aliyuncs.com/jquery-1.8.3.min.js' type='text/javascript'></script>
+
+<div id='search_main'>
+<form action='http://huaban.com/search/' id='sform' method='get' target='_blank'>
+<div id='search'>
+<div class='jsSelect' id='Select'>
+<ul>
+<li class='s'>参考&#183;花瓣</li>
+<li id='huaban_s'>参考&#183;花瓣</li>
+<li id='nipic_s'>素材&#183;妮图</li>
+<li id='finder_s'>图标&#183;英文</li>
+<li id='dribbble_s'>dribbble</li>
+</ul>
+</div>
+<input autocomplete='off' id='inp' name='q' onClick='if(this.value==&#39;快捷搜索关键词&#39;)this.value=&#39;&#39;' onFocus='this.select()' onMouseOut='if(this.value==&#39;&#39;)this.value=&#39;快捷搜索关键词&#39;;' onMouseOver='this.focus()' type='text' value='快捷搜索关键词'/>
+</div>
+<input id='sure' type='submit' value='搜素'/>
+</form>
+</div>
+<div class='clear'></div>
+<style>* {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	text-decoration:none;
+}
+input, button, select, textarea {
+	outline:none;
+
+}
+textarea {
+	font-size:13px;
+	resize:none;
+}
+#search_main{
+	background:#333;
+}
+#search {
+    width:100%;
+	height:40px;
+background:#333;
+	border-bottom:#eaeaea 1px solid;
+	float:left;
+}
+.jsSelect {
+	width:100px;
+	height:200px;
+	float:left;
+	display:inline;
+	margin-left:-2px;
+}
+.jsSelect ul {
+	width:100px;
+	height:28px;
+	overflow:hidden;
+	background:#333;
+	float:left;
+	position:absolute;
+}
+.jsSelect ul .s {
+height:40px;
+line-height:40px;
+	display:block;
+background-image: url(https://dribbble.com/assets/icon-dd-arrow-2x-ff072f5f0b4a74f739e2c5a74520c3083313042ab0a9ff8470f32f2945064880.png);
+background-repeat: no-repeat;
+background-position: -840px -194px;
+	cursor:default;
+	cursor:pointer;
+	color:#1FA9F0;
+	border:none;
+	border-left:2px solid #cccccc;
+}
+
+.jsSelect ul li {
+	width:98px;
+	height:28px;
+	line-height:28px;
+	font-size: 14px;
+	font-weight: bold;
+	cursor:pointer;
+	text-align:center;
+	color:#A8A8A8;
+	border:none;
+	border-left:1px solid #eaeaea;
+	border-right:1px solid #eaeaea;
+}
+#dribbble_s {
+	border-bottom:1px solid #eaeaea;
+}
+#inp {
+	width:80%;
+	height:40px;
+	background:#333;
+	font-size:14px;
+	border:none;
+	color:#666;
+padding:0px;
+padding-left:10px;
+}
+#sure{
+	width:10%;
+	height:40px;
+	background-color:#888;
+color:#ffffff;
+	border:none;
+	float:left;
+	cursor:pointer;
+padding:0px;
+display:none;
+}
+</style>
+<script>	$(document).ready(function(){
+		//$("#inp").focus();
+		$("body #Select").each(function(i){ 
+		i= i+1
+		this.id = "Select" + i; 
+		var SumimasenSelect = $("#Select"+i)
+		$(SumimasenSelect).find("ul li:first").hover(function(){
+			$(".s").css("background","url(https://dribbble.com/assets/icon-dd-arrow-2x-ff072f5f0b4a74f739e2c5a74520c3083313042ab0a9ff8470f32f2945064880.png); -877px -199px; no-repeat");
+			$(this).parent("ul").css("height",200)
+			$(this).siblings("ul li:not(.s)").mouseenter(function(){
+				$(".s").css("background","url(https://dribbble.com/assets/icon-dd-arrow-2x-ff072f5f0b4a74f739e2c5a74520c3083313042ab0a9ff8470f32f2945064880.png); -877px -199px; no-repeat");
+				$(this).css("background","#39f").css("color","#FFFFFF")
+			});
+			$(this).siblings("ul li:not(.s)").mouseleave(function(){
+				$(this).css("background","none").css("color","#A8A8A8")
+				$(".s").css("background","url(https://dribbble.com/assets/icon-dd-arrow-2x-ff072f5f0b4a74f739e2c5a74520c3083313042ab0a9ff8470f32f2945064880.png); -877px -199px; no-repeat");
+			});
+			$(this).siblings("ul li:not(.s)").click(function(){
+				$(this).parent("ul").css("height",28)
+				var cdContent = $(this).text()
+				$(SumimasenSelect).find("ul li:first").text(cdContent)
+			});
+			$(this).parent(SumimasenSelect).mouseleave(function(){
+				$(this).css("height",28)
+			});
+			$("#nipic_s").click(function(){
+			$("#inp").attr("name","q");
+			$("#sform").attr("action","http://soso.nipic.com/");
+			$("#searchimg").css("background","url(images/50_70.PNG) 0px 0px");
+			});
+			$("#finder_s").click(function(){
+			$("#inp").attr("name","q");
+			$("#sform").attr("action","https://www.iconfinder.com/search/");
+			$("#searchimg").css("background","url(images/50_70.PNG) 0px -14px");
+			});
+			$("#huaban_s").click(function(){
+			$("#inp").attr("name","q");
+			$("#sform").attr("action","http://huaban.com/search/");
+			$("#searchimg").css("background","url(images/50_70.PNG) 0px -42px");
+			});
+			$("#dribbble_s").click(function(){
+			$("#inp").attr("name","q");
+			$("#sform").attr("action","https://dribbble.com/search");
+			$("#searchimg").css("background","url(images/50_70.PNG) 0px -28px");
+			});
+			$("#youdao_s").click(function(){
+			$("#inp").attr("name","q");
+			$("#sform").attr("action","http://www.youdao.com/search");
+			$("#searchimg").css("background","url(images/50_70.PNG) 0px -56px");
+			});
+			$("#wen_s").click(function(){
+			$("#sform").attr("action","http://wenwen.soso.com/z/")
+			});
+			$("#news_s").click(function(){
+			$("#sform").attr("action","http://news.soso.com/n.q")
+			});
+	});
+		
+		},function(){
+		$(".s").css("background","url(http://mat1.gtimg.com/www/images/qq2012/qqbg_1.6.1.png); -877px -199px; no-repeat");
+		
+	});
+	});
+
+
+
+</script>
+<!--搜索结束-->
+
+
+  </body>
+</html>
